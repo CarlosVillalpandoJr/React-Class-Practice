@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CharacterList from './components/CharacterList'
-import styled from 'styled-components'
+import SearchBox from './components/SearchBox'
 import './App.css';
 
 
@@ -30,7 +30,7 @@ class App extends Component {
     return (
       <div className='App'>
         <h1>Star Wars Characters</h1>
-        <input type='search' placeholder='Search Character' onChange={e => this.setState({searchField: e.target.value})}/>
+        <SearchBox placeholder='Search Characters' handleChange={e => this.setState({searchField: e.target.value})}/>
         <CharacterList characters={filteredCharacters}/>
       </div>
     );
