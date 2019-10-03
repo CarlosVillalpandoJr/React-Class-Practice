@@ -21,6 +21,11 @@ class App extends Component {
       .then(charactersResults => this.setState({ characters: charactersResults.results }))
   }
 
+  handleChange = (e) => { 
+    this.setState({ searchField: e.target.value }) // Automatically binds 'this' to where arrow function is defined (ES6)
+  }                                               // Lexical Scoping, bind this context to where defined
+
+
 
   render() {
     const { characters, searchField } = this.state
@@ -30,7 +35,7 @@ class App extends Component {
     return (
       <div className='App'>
         <h1>Star Wars Characters</h1>
-        <SearchBox placeholder='Search Characters' handleChange={e => this.setState({searchField: e.target.value})}/>
+        <SearchBox placeholder='Search Characters' handleChange={this.handleChange}/>
         <CharacterList characters={filteredCharacters}/>
       </div>
     );
